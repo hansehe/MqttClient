@@ -1,0 +1,14 @@
+version: '3.2'
+
+services:
+  dotnet-rabbitmq-pingpong:
+    image: hansehe/dotnet-rabbitmq-pingpong:latest
+    hostname: dotnet-rabbitmq-pingpong
+    networks:
+      - backend_network
+    ports:
+      - 5000:80
+
+networks:
+  backend_network:
+    external: true

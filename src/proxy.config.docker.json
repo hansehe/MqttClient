@@ -1,4 +1,14 @@
+
 {
+    "/pingpong/api/*":{
+        "target": "http://dotnet-rabbitmq-pingpong:80",
+        "secure": false,
+        "logLevel": "debug",
+        "changeOrigin": true,
+        "pathRewrite": {
+            "^/pingpong/": ""
+        }
+    },
     "/rabbitmq/*":{
         "target": "http://rabbitmq-service:15675",
         "secure": false,

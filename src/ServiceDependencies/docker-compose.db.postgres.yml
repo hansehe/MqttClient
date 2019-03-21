@@ -1,0 +1,23 @@
+version: '3'
+
+services:
+  postgres-db:
+    image: postgres
+    hostname: postgres-db
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+      placement:
+        constraints:
+          - node.role == manager
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin
+      PGDATA: /var/lib/postgresql/data/dbdata
+    networks:
+      - backend_network
+
+networks:
+  backend_network:
+    external: true

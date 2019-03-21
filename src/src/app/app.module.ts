@@ -7,6 +7,7 @@ import { CommonModule } from '@angular/common';
 import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
 import { DropdownModule } from 'primeng/dropdown';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 
@@ -28,7 +29,8 @@ import { MqttCommunicationComponent } from './mqtt-communication/mqtt-communicat
     TableModule,
     ButtonModule,
     InputTextModule,
-    DropdownModule
+    DropdownModule,
+    HttpClientModule
   ],
   providers: [
     { provide: IMqttCommunicationService, useClass: MqttCommunicationService }

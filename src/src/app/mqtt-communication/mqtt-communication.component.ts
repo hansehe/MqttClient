@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Guid } from 'guid-typescript';
+import { HttpClient } from '@angular/common/http';
 
 import { IMqttCommunicationService } from '../mqtt-communication-service/mqtt-communication.interface';
 import { EventContract } from '../contracts/event-contract'
@@ -16,7 +17,7 @@ export class MqttCommunicationComponent implements OnInit {
   connected = false;
   username = 'amqp';
   password = 'amqp';
-  messageInput = 'mqtt message ';
+  messageInput = 'ping pong!';
   pingPongs = 100;
 
   receivedEvents: { [id: string]: EventContract } = {};
@@ -24,7 +25,9 @@ export class MqttCommunicationComponent implements OnInit {
 
   cols: any[];
 
-  constructor(private mqttCommunicationService: IMqttCommunicationService) { }
+  constructor(
+    private http: HttpClient,
+    private mqttCommunicationService: IMqttCommunicationService) { }
 
   ngOnInit() {
     this.cols = [
@@ -39,7 +42,7 @@ export class MqttCommunicationComponent implements OnInit {
     });
   }
 
-  sendMessage() {
+  publishMessage() {
     const message = this.messageInput;
     let eventContract: EventContract = 
     {
@@ -50,6 +53,22 @@ export class MqttCommunicationComponent implements OnInit {
       Forward: true
     }
     this.mqttCommunicationService.send(this.topic, JSON.stringify(eventContract));
+  }
+
+  sendMessage() {
+    const pingPongUrl = '/pingpong/api/event/';
+    const message = this.messageInput;
+    let eventContract: EventContract = 
+    {
+      Id: Guid.create().toString(),
+      Event: message,
+      Stop: false,
+      PingPongs: this.pingPongs,
+      Forward: true
+    }
+    this.http.post(pingPongUrl, eventContract).subscribe(() => {
+      console.log("ping pong message sent!");
+    });
   }
 
   handleConnected(connected: boolean) {

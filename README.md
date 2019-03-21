@@ -1,7 +1,7 @@
-# MqttClient
+# Ping Pong Client
 
 ## Introduction
-This web client introduces how to setup mqtt with angular.
+This web client introduces how to setup mqtt with angular to initiate a ping pong session with rabbitmq.
 
 Follow the steps below to get the service up and running! :)
 

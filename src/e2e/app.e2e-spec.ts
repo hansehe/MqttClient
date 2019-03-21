@@ -1,7 +1,7 @@
 import { AppPage } from './app.po';
 import { browser } from 'protractor';
 
-describe('mqtt-service App', () => {
+describe('pingpong-service App', () => {
   let page: AppPage;
 
   beforeEach(() => {

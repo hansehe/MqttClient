@@ -8,7 +8,7 @@ services:
       - frontend_network
       - backend_network
     depends_on:
-      - mqtt-web
+      - pingpong-web
 
 networks:
   frontend_network:

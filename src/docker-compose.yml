@@ -1,9 +1,9 @@
 version: '3'
 
 services:
-  mqtt-web:
-    image: ${IMAGE_REPO}mqtt-web:${VERSION}
-    hostname: mqtt-web
+  pingpong-web:
+    image: ${IMAGE_REPO}pingpong-web:${VERSION}
+    hostname: pingpong-web
     networks:
       - frontend_network
       - backend_network

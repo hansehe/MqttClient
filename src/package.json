@@ -1,11 +1,11 @@
 {
-  "name": "mqtt-web",
+  "name": "pingpong-web",
   "version": "1.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve --base-href /mqtt/ --disable-host-check --proxy-config proxy.config.json --ssl 1",
-    "start-docker": "ng serve --base-href /mqtt/ --disable-host-check --proxy-config proxy.config.docker.json",
-    "build": "ng build --prod --base-href /mqtt/",
+    "start": "ng serve --base-href /pingpong/ --disable-host-check --proxy-config proxy.config.json --ssl 1",
+    "start-docker": "ng serve --base-href /pingpong/ --disable-host-check --proxy-config proxy.config.docker.json",
+    "build": "ng build --prod --base-href /pingpong/",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e --disable-host-check --proxy-config proxy.config.json --ssl 1"

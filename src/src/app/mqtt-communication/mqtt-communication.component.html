@@ -5,7 +5,10 @@
   <p-button id="green-button" (click)="connect()">connected to Rabbit</p-button>
 </p>
 <p *ngIf="connected == true">
-  <p-button id="sendMessageButton" (click)="sendMessage()">Send Mqtt Message</p-button>
+  <p-button id="sendMessageButton" (click)="sendMessage()">Send Ping Pong Message!</p-button>
+</p>
+<p *ngIf="connected == true">
+  <p-button id="publishMessageButton" (click)="publishMessage()">Publish Ping Pong Message With MQTT!</p-button>
 </p>
 <p *ngIf="connected == true">
   Message: <input type="text" pInputText [(ngModel)]="messageInput" name="messageInput">

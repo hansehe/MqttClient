@@ -1,4 +1,13 @@
 {
+    "/pingpong/api/*":{
+        "target": "http://localhost:5000",
+        "secure": false,
+        "logLevel": "debug",
+        "changeOrigin": true,
+        "pathRewrite": {
+            "^/pingpong/": ""
+        }
+    },
     "/rabbitmq/*":{
         "target": "http://localhost:15675",
         "secure": false,

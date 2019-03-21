@@ -16,6 +16,8 @@ volumes:
 stacks:
     rabbitmq: docker-compose.rabbitmq.yml
     portainer: docker-compose.portainer.yml
+    dotnetpingpong: docker-compose.pingpong.server.yml
+    postgres_db: docker-compose.db.postgres.yml
 
 env_files:
     - .env
