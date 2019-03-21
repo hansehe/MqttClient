@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+  mqtt-web:
+    image: mqtt-web:${VERSION}
+    hostname: mqtt-web
+    networks:
+      - frontend_network
+      - backend_network
+      
+networks:
+  frontend_network:
+    external: true
+  backend_network:
+    external: true

@@ -1,0 +1,35 @@
+<p *ngIf="connected != true">
+  <p-button id="red-button" (click)="connect()">connect to Rabbit</p-button>
+</p>
+<p *ngIf="connected == true">
+  <p-button id="green-button" (click)="connect()">connected to Rabbit</p-button>
+</p>
+<p *ngIf="connected == true">
+  <p-button id="sendMessageButton" (click)="sendMessage()">Send Mqtt Message</p-button>
+</p>
+<p *ngIf="connected == true">
+  Message: <input type="text" pInputText [(ngModel)]="messageInput" name="messageInput">
+</p>
+<p *ngIf="connected == true">
+  PingPongs: <input type="number" pInputText [(ngModel)]="pingPongs" name="pingPongs">
+</p>
+<p *ngIf="connected == true" id='messageResult'>Number of received mqtt messages: {{nReceivedMessages}}</p>
+
+<div *ngIf="connected == true">
+  <p-table [value]="receivedEventKeys">
+      <ng-template pTemplate="header">
+          <tr>
+              <th *ngFor="let col of cols">
+                  {{col.header}}
+              </th>
+          </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-receivedEventKey>
+          <tr>
+              <td *ngFor="let col of cols">
+                      {{receivedEvents[receivedEventKey][col.field]}}
+              </td>
+          </tr>
+      </ng-template>
+  </p-table>
+</div>

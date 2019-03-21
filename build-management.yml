@@ -1,0 +1,38 @@
+changelog:
+    file: CHANGELOG.md
+    envKey: VERSION
+
+run:
+    selections:
+        webService:
+            directory: src
+            files:
+                - docker-compose.yml
+                - docker-compose.ssl.yml
+                - docker-compose.override.yml
+
+build:
+    selections:
+        webService:
+            directory: src
+            additionalTag: latest
+            files:
+                - docker-compose.yml
+                - docker-compose.ssl.yml
+                - docker-compose.override.yml
+
+test:
+    selections:
+        webService:
+            directory: src
+            containerNames:
+                - service-tests
+            files:
+                - docker-compose.tests.yml
+
+swarm:
+    selections:
+        webService:
+            directory: src/ServiceDependencies
+            files:
+                - swarm-management.yml

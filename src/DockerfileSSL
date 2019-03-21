@@ -1,0 +1,6 @@
+FROM nginx:latest
+
+COPY DockerSSLProxy/site.crt /run/secrets/site.crt
+COPY DockerSSLProxy/site.key /run/secrets/site.key
+
+COPY DockerSSLProxy/site.conf /etc/nginx/conf.d/site.conf

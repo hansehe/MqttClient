@@ -1,0 +1,17 @@
+version: "3"
+
+services:
+  ssl-proxy-web:
+    image: ssl-proxy-web
+    restart: always
+    networks:
+      - frontend_network
+      - backend_network
+    depends_on:
+      - mqtt-web
+
+networks:
+  frontend_network:
+    external: true
+  backend_network:
+    external: true

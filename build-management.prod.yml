@@ -1,0 +1,30 @@
+changelog:
+    file: CHANGELOG.md
+    envKey: VERSION
+
+run:
+    selections:
+        webService:
+            directory: src
+            files:
+                - docker-compose.yml
+                - docker-compose.ssl.yml
+                - docker-compose.prod.yml
+
+build:
+    selections:
+        webService:
+            directory: src
+            additionalTag: latest
+            files:
+                - docker-compose.yml
+                - docker-compose.ssl.yml
+                - docker-compose.prod.yml
+
+publish:
+    selections:
+        webService:
+            directory: src
+            additionalTag: latest
+            files:
+                - docker-compose.yml

@@ -1,0 +1,5 @@
+FROM nginx
+
+COPY ./DockerSSLProxy/site.crt /etc/nginx/site.crt
+COPY ./DockerSSLProxy/site.key /etc/nginx/site.key
+COPY ./DockerSSLProxy/site.prod.conf /etc/nginx/conf.d/site.conf
