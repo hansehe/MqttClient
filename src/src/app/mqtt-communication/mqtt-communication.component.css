@@ -1,7 +1,44 @@
-.ui-button.red-button {
+#red-button {
    background-color: red;
+   color: white;
 }
 
-.ui-button.green-button {
+#green-button {
    background-color: green;
+   color: white;
+}
+
+.buttonRow {
+   position: relative;
+   display: flex;
+   width: 100%;
+}
+
+.buttonRow>* {
+   flex: 100 100 50%;
+}
+
+button + button {
+    margin-left: 10px;
+}
+
+button {
+   padding: 0.5em;
+   border-style: solid;
+   border-color: #444;
+   border-width: 1px;
+}
+
+table {
+   width: 100%;
+   border-collapse: collapse;
+}
+
+thead {
+   background-color: gray;
+   color: white;
+}
+
+td{
+   border: 1px solid #444;
 }

@@ -1,14 +1,12 @@
-<p *ngIf="connected != true">
-  <p-button id="red-button" (click)="connect()">connect to Rabbit</p-button>
+<p  class="buttonRow" *ngIf="connected != true">
+  <button id="red-button" (click)="connect()">Connect To Rabbit</button>
 </p>
-<p *ngIf="connected == true">
-  <p-button id="green-button" (click)="connect()">connected to Rabbit</p-button>
+<p  class="buttonRow" *ngIf="connected == true">
+  <button id="green-button" (click)="connect()">Connected To Rabbit</button>
 </p>
-<p *ngIf="connected == true">
-  <p-button id="sendMessageButton" (click)="sendMessage()">Send Ping Pong Message!</p-button>
-</p>
-<p *ngIf="connected == true">
-  <p-button id="publishMessageButton" (click)="publishMessage()">Publish Ping Pong Message With MQTT!</p-button>
+<p class="buttonRow" *ngIf="connected == true">
+  <button id="sendMessageButton" [disabled]="sendMessageDisabled" (click)="sendMessage()">Send Ping Pong Message!</button>
+  <button id="publishMessageButton" (click)="publishMessage()">Publish Ping Pong Message With MQTT!</button>
 </p>
 <p *ngIf="connected == true">
   Message: <input type="text" pInputText [(ngModel)]="messageInput" maxlength="100" name="messageInput">
@@ -17,22 +15,25 @@
   PingPongs: <input type="number" pInputText [(ngModel)]="pingPongs" name="pingPongs">
 </p>
 <p *ngIf="connected == true" id='messageResult'>Number of received mqtt messages: {{nReceivedMessages}}</p>
+<p *ngIf="connected == true" id='messageResult'>Received mqtt messages: {{nReceivedMessagesPerSec}} per/sec</p>
 
 <div *ngIf="connected == true">
-  <p-table [value]="receivedEventKeys">
-      <ng-template pTemplate="header">
+  <table>
+      <thead>
           <tr>
-              <th *ngFor="let col of cols">
-                  {{col.header}}
-              </th>
+              <th>Event</th>
+              <th>PingPongs</th>
           </tr>
-      </ng-template>
-      <ng-template pTemplate="body" let-receivedEventKey>
-          <tr>
-              <td *ngFor="let col of cols">
-                      {{receivedEvents[receivedEventKey][col.field]}}
+      </thead>
+      <tbody>
+          <tr *ngFor="let key of receivedEventKeys">
+              <td>
+                  {{receivedEvents[key].Event}}
+              </td>
+              <td>
+                  {{receivedEvents[key].PingPongs}}
               </td>
           </tr>
-      </ng-template>
-  </p-table>
+      </tbody>
+  </table>
 </div>
