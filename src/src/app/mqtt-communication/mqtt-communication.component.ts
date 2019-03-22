@@ -18,6 +18,7 @@ export class MqttCommunicationComponent implements OnInit {
   username = 'amqp';
   password = 'amqp';
   messageInput = 'ping pong!';
+  maxPingpongs = 1000;
   pingPongs = 100;
 
   receivedEvents: { [id: string]: EventContract } = {};
@@ -49,7 +50,7 @@ export class MqttCommunicationComponent implements OnInit {
       Id: Guid.create().toString(),
       Event: message,
       Stop: false,
-      PingPongs: this.pingPongs,
+      PingPongs: this.getValidPingPongs(),
       Forward: true
     }
     this.mqttCommunicationService.send(this.topic, JSON.stringify(eventContract));
@@ -63,7 +64,7 @@ export class MqttCommunicationComponent implements OnInit {
       Id: Guid.create().toString(),
       Event: message,
       Stop: false,
-      PingPongs: this.pingPongs,
+      PingPongs: this.getValidPingPongs(),
       Forward: true
     }
     this.http.post(pingPongUrl, eventContract).subscribe(() => {
@@ -91,6 +92,18 @@ export class MqttCommunicationComponent implements OnInit {
         this.receivedEventKeys.splice(index);
       }
     });
+  }
+
+  getValidPingPongs(): number {
+    if (this.pingPongs > this.maxPingpongs)
+    {
+      this.pingPongs = this.maxPingpongs;
+    }
+    else if (this.pingPongs < 0)
+    {
+      this.pingPongs = 0;
+    }
+    return this.pingPongs;
   }
 
 }

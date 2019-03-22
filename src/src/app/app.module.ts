@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TableModule } from 'primeng/table';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CommonModule } from '@angular/common';
@@ -26,6 +26,7 @@ import { MqttCommunicationComponent } from './mqtt-communication/mqtt-communicat
     BrowserAnimationsModule,
     CommonModule,
     FormsModule,
+    ReactiveFormsModule,
     TableModule,
     ButtonModule,
     InputTextModule,

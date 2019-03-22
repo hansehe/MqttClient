@@ -11,7 +11,7 @@
   <p-button id="publishMessageButton" (click)="publishMessage()">Publish Ping Pong Message With MQTT!</p-button>
 </p>
 <p *ngIf="connected == true">
-  Message: <input type="text" pInputText [(ngModel)]="messageInput" name="messageInput">
+  Message: <input type="text" pInputText [(ngModel)]="messageInput" maxlength="100" name="messageInput">
 </p>
 <p *ngIf="connected == true">
   PingPongs: <input type="number" pInputText [(ngModel)]="pingPongs" name="pingPongs">
