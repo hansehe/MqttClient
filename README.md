@@ -25,9 +25,17 @@ Follow the steps below to get the service up and running! :)
 2. Test solution in containers:
     - `dbm -test`
 3. Build and run development solution as container images:
+    - Be sure to have volume sharing turned on in your Docker settings.
     - `dbm -build -run`
-    - Go and develope!
+    - Go and develop!
         - http://localhost:4200/
+        - With ssl: https://localhost/
+    - If you wanna develop directly without docker, do as follows:
+        - Install node..
+        - `cd src`
+        - `npm install`
+        - `npm start`
+        - With ssl: https://localhost:4200/
 4. Build and run prod solution as container images:
     - `dbm -f build-management.prod.yml -build -run`
 5. Publish new docker image:
