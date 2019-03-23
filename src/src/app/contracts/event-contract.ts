@@ -3,5 +3,4 @@ export interface EventContract {
     Event: string;
     Stop: boolean;
     PingPongs: number;
-    Forward: boolean;
 }

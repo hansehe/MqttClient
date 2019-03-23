@@ -13,6 +13,7 @@ import { EventContract } from '../contracts/event-contract'
 export class MqttCommunicationComponent implements OnInit {
   count = 0;
   topic = 'Contracts.Event';
+  forwardTopic = 'Contracts.Forward.Event';
   nReceivedMessages = 0;
   lastnReceivedMessages = 0;
   nReceivedMessagesPerSec = 0;
@@ -48,30 +49,14 @@ export class MqttCommunicationComponent implements OnInit {
   }
 
   publishMessage() {
-    const message = this.messageInput;
-    let eventContract: EventContract = 
-    {
-      Id: Guid.create().toString(),
-      Event: message,
-      Stop: false,
-      PingPongs: this.getValidPingPongs(),
-      Forward: true
-    }
-    this.mqttCommunicationService.send(this.topic, JSON.stringify(eventContract));
+    let eventContract = this.getEventContract();
+    this.mqttCommunicationService.send(this.forwardTopic, JSON.stringify(eventContract));
   }
 
   sendMessage() {
     this.sendMessageDisabled = true;
     const pingPongUrl = '/pingpong/api/event/';
-    const message = this.messageInput;
-    let eventContract: EventContract = 
-    {
-      Id: Guid.create().toString(),
-      Event: message,
-      Stop: false,
-      PingPongs: this.getValidPingPongs(),
-      Forward: true
-    }
+    let eventContract = this.getEventContract();
     this.http.post(pingPongUrl, eventContract).subscribe(() => {
       this.sendMessageDisabled = false;
     });
@@ -104,6 +89,18 @@ export class MqttCommunicationComponent implements OnInit {
         delete this.receivedEvents[contract.Id];
       }
     });
+  }
+
+  getEventContract(): EventContract {
+    const message = this.messageInput;
+    let eventContract: EventContract = 
+    {
+      Id: Guid.create().toString(),
+      Event: message,
+      Stop: false,
+      PingPongs: this.getValidPingPongs(),
+    }
+    return eventContract;
   }
 
   getValidPingPongs(): number {
