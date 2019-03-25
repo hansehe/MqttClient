@@ -6,7 +6,7 @@
 </p>
 <p class="buttonRow" *ngIf="connected == true">
   <button id="sendMessageButton" [disabled]="sendMessageDisabled" (click)="sendMessage()">Send Ping Pong Message!</button>
-  <button id="publishMessageButton" (click)="publishMessage()">Publish Ping Pong Message With MQTT!</button>
+  <!-- <button id="publishMessageButton" (click)="publishMessage()">Publish Ping Pong Message With MQTT!</button> -->
 </p>
 <p *ngIf="connected == true">
   Message: <input type="text" pInputText [(ngModel)]="messageInput" maxlength="100" name="messageInput">
